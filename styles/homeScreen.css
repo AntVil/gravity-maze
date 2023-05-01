@@ -1,0 +1,38 @@
+:root {
+    --home-screen-size: min(var(--screen-square), 600px);
+}
+
+header {
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(var(--home-screen-size) / 50);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--home-screen-size);
+    height: var(--home-screen-size);
+    padding: calc(var(--home-screen-size) / 50);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+header>h1 {
+    font-size: calc(var(--home-screen-size) / 8);
+}
+
+header>button {
+    width: 60%;
+    padding: calc(var(--home-screen-size) / 100);
+    border: none;
+    font-size: calc(var(--home-screen-size) / 20);
+    background-color: var(--theme-color-1);
+}
+
+@media (hover: hover) {
+    header>button {
+        cursor: pointer;
+    }
+}

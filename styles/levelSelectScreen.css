@@ -1,0 +1,47 @@
+:root {
+    --level-select-button-size: min(calc(var(--screen-square) / 8), 75px);
+}
+
+nav {
+    isolation: isolate;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: calc(var(--home-screen-size) / 50);
+    width: var(--screen-width);
+    height: var(--screen-height);
+    padding: calc(var(--home-screen-size) / 50);
+}
+
+nav button {
+    width: var(--level-select-button-size);
+    height: var(--level-select-button-size);
+    padding: calc(var(--home-screen-size) / 100);
+    border: none;
+    font-size: calc(var(--home-screen-size) / 20);
+    background-color: var(--theme-color-1);
+}
+
+nav>section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: calc(var(--level-select-button-size) / 5);
+    position: relative;
+    left: 50%;
+    width: fit-content;
+    height: fit-content;
+    max-height: 100%;
+    transform: translate(-50%, 0);
+    overflow-y: scroll;
+}
+
+@media (min-width: 600px) {
+    nav>section {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (hover: hover) {
+    nav button {
+        cursor: pointer;
+    }
+}

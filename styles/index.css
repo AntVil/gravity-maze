@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+    margin: 0;
+    scrollbar-width: 0;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --screen-width: 100vw;
+    --screen-height: 100vh;
+
+    --screen-square: min(var(--screen-width), var(--screen-height));
+}
+
+@supports (width: 100svh) {
+    :root {
+        --screen-width: 100svw;
+        --screen-height: 100svh;
+    }
+}
+
+body,
+#canvas {
+    position: fixed;
+    width: var(--screen-width);
+    height: var(--screen-height);
+    overflow: hidden;
+}
+
+#canvas~:not(.mounted) {
+    display: none;
+}
