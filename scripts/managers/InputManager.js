@@ -27,10 +27,10 @@ class InputManager extends GameManager {
             this.handleMouseUp(e);
         });
         this.canvas.addEventListener("mouseleave", (e) => {
-            this.handleMouseUp(e);
+            this.handleCancel(e);
         });
         this.canvas.addEventListener("touchcancel", (e) => {
-            this.handleMouseUp(e);
+            this.handleCancel(e);
         });
 
         this.startX = undefined;
@@ -91,6 +91,13 @@ class InputManager extends GameManager {
                 }
             }
         }
+
+        this.startX = undefined;
+        this.startY = undefined;
+    }
+
+    handleCancel(e) {
+        e.preventDefault();
 
         this.startX = undefined;
         this.startY = undefined;

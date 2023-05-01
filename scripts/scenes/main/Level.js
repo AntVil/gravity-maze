@@ -26,10 +26,18 @@ class Level extends MountableGameManager {
     }
 
     reset() {
-        let [gridString, movablesString] = (LEVEL_STRINGS[this.levelIndex] || "&").split("&");
+        let [gridString, entitiesString, metaString] = (LEVEL_STRINGS[this.levelIndex] || "&&").split("&");
 
+        this.resetGrid(gridString);
+        this.resetEntities(entitiesString);
+        this.resetMeta(metaString);
+    }
+
+    resetGrid(gridString) {
         this.grid = new Grid(gridString);
+    }
 
+    resetEntities(entitiesString) {
         let entityElements = {
             "p": Player,
             "*": Star
@@ -37,10 +45,30 @@ class Level extends MountableGameManager {
 
         this.entities = [];
 
-        for (let [_, entityChar, parametersString] of movablesString.matchAll(/([^0-9])([0-9,]+)/g)) {
+        for (let [_, entityChar, parametersString] of entitiesString.matchAll(/([^0-9])([0-9,]+)/g)) {
             let parameters = parametersString.split(",").map((a) => parseInt(a));
 
             this.entities.push(new entityElements[entityChar](...parameters));
+        }
+    }
+
+    resetMeta(metaString) {
+        let metaElements = {
+            "d": (direction) => {
+                if (direction === "0") {
+                    this.inputDirection(0, -1);
+                } else if (direction === "1") {
+                    this.inputDirection(1, 0);
+                } else if (direction === "2") {
+                    this.inputDirection(0, 1);
+                } else if (direction === "3") {
+                    this.inputDirection(-1, 0);
+                }
+            }
+        }
+
+        for (let [_, metaChar, metaCode] of metaString.matchAll(/([^0-9])([0-9,]+)/g)) {
+            metaElements[metaChar](metaCode);
         }
     }
 

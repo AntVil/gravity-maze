@@ -4,11 +4,15 @@ class SolidBlock extends GridBlock {
     }
 
     render(context, width, height) {
-        context.fillStyle = "#000";
+        context.save();
+
+        context.fillStyle = "#333";
         context.fillRect(this.x * width, this.y * height, width, height);
+
+        context.restore();
     }
 
-    interactEntity(entity){
+    interactEntity(entity) {
         entity.x = Math.round(entity.x);
         entity.y = Math.round(entity.y);
 
