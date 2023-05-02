@@ -25,6 +25,14 @@ class Level extends MountableGameManager {
         this.paused = true;
     }
 
+    finishLevel() {
+
+    }
+
+    getLevelIndex() {
+        return this.levelIndex;
+    }
+
     reset() {
         let [gridString, entitiesString, metaString] = (LEVEL_STRINGS[this.levelIndex] || "&&").split("&");
 
@@ -40,7 +48,8 @@ class Level extends MountableGameManager {
     resetEntities(entitiesString) {
         let entityElements = {
             "p": Player,
-            "*": Star
+            "*": Star,
+            "g": Goal
         }
 
         this.entities = [];
@@ -99,6 +108,10 @@ class Level extends MountableGameManager {
     }
 
     inputDirection(xDirection, yDirection) {
+        if (this.paused) {
+            return;
+        }
+
         for (let entity of this.entities) {
             if (!entity.inputIsPossible()) {
                 return;
@@ -109,6 +122,13 @@ class Level extends MountableGameManager {
             entity.inputDirection(xDirection, yDirection);
         }
 
-        this.entities = [...this.entities].sort((a, b) => b.xSpeed - a.xSpeed || b.ySpeed - a.ySpeed || b.x - a.x || b.y - b.y);
+        this.entities = [...this.entities].sort(
+            (a, b) =>
+                (Math.abs(a.xSpeed || 0) + Math.abs(a.ySpeed || 0) - (Math.abs(b.xSpeed || 0) + Math.abs(b.ySpeed || 0))) ||
+                b.xSpeed - a.xSpeed ||
+                b.ySpeed - a.ySpeed ||
+                b.x - a.x ||
+                b.y - b.y
+        );
     }
 }

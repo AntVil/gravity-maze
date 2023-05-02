@@ -12,5 +12,6 @@ const ENTITY_SPEED = 0.01;
 const ENTITY_STROKE_WIDTH = 0.0625;
 
 const LEVEL_STRINGS = [
-    "bbbbbbbbbbbbbbbbbbbb     bbbb bbb bb   bbb bbbbbbbb bbbbbb    bbbbbbb  bbbbbbbbbb&p0,4*2,2*6,3*7,7&d2"
+    "bbbbbbbbbbbbbbbbbbbb     bbbb bbb bb   bbb bbbbbbbb bbbbbb    bbbbbbb  bbbbbbbbbb&p0,4*2,2*6,3*7,7g4,6&d2",
+    " b  bbbbb        b   bbbb b   bbbb b   bbbb bb        bb b bb b   b bb b   b bbbb&p4,8*8,5*2,0*0,7g7,7&d2"
 ];

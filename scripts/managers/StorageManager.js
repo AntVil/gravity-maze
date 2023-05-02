@@ -8,10 +8,7 @@ class StorageManager extends GameManager {
     getLevelInfos() {
         return [
             true,
-            true,
-            true,
-            true,
-            true,
+            true
         ];
     }
 }
