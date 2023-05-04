@@ -18,7 +18,6 @@ class MainScene extends Scene {
 
         this.pauseButton.onclick = () => this.pause();
         this.pauseResumeButton.onclick = () => this.unpause();
-        //this.pauseBackground.onclick = () => this.unpause();
         this.pauseQuitButton.onclick = () => this.quit();
 
         this.completedQuitButton.onclick = () => this.quit();

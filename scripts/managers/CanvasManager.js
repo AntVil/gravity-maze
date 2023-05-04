@@ -4,6 +4,7 @@ class CanvasManager {
         this.resize();
 
         window.addEventListener("resize", () => this.resize());
+        screen.orientation.addEventListener("change", () => this.resize());
     }
 
     getCanvas() {

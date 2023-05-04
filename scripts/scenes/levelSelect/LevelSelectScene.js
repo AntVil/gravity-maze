@@ -5,9 +5,7 @@ class LevelSelectScene extends Scene {
         this.backButton = this.uiContainer.children[0];
         this.levelContainer = this.uiContainer.children[1];
 
-        this.backButton.onclick = () => {
-            game.sceneManager.toScene(HOME_SCENE);
-        }
+        this.backButton.onclick = () => game.sceneManager.toScene(HOME_SCENE);
     }
 
     mount() {
