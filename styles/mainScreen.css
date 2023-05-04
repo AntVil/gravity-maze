@@ -24,28 +24,24 @@ main>button:nth-child(2) {
     top: 0;
 }
 
-main>section:not(.mounted) {
-    display: none;
+main dialog {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--theme-color-2);
+    padding: 0;
 }
 
-main>section {
-    isolation: isolate;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: var(--screen-width);
-    height: var(--screen-height);
-    background-color: #0006;
+main dialog::backdrop {
+    background-color: #000A;
 }
 
-main div {
+main dialog div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: calc(var(--main-button-size) / 10);
-    width: min(80%, 300px);
     padding: calc(var(--main-button-size) / 10);
-    background-color: var(--theme-color-2);
 }
 
 main h2 {
@@ -54,7 +50,7 @@ main h2 {
     text-align: center;
 }
 
-main div button {
+main dialog button {
     flex: 1 1 0px;
     font-size: calc(var(--main-button-size) / 3);
     padding: calc(var(--main-button-size) / 10);

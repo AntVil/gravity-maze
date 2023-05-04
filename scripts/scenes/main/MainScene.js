@@ -6,19 +6,19 @@ class MainScene extends Scene {
 
         this.undoButton = this.uiContainer.children[0];
         this.pauseButton = this.uiContainer.children[1];
-        this.pauseBackground = this.uiContainer.children[2];
-        this.completedBackground = this.uiContainer.children[3];
+        this.pauseModal = this.uiContainer.children[2];
+        this.completedModal = this.uiContainer.children[3];
 
-        this.pauseQuitButton = this.pauseBackground.children[0].children[1];
-        this.pauseResumeButton = this.pauseBackground.children[0].children[2];
+        this.pauseQuitButton = this.pauseModal.children[0].children[1];
+        this.pauseResumeButton = this.pauseModal.children[0].children[2];
 
-        this.completedQuitButton = this.completedBackground.children[0].children[1];
-        this.completedResetButton = this.completedBackground.children[0].children[2];
-        this.completedNextButton = this.completedBackground.children[0].children[3];
+        this.completedQuitButton = this.completedModal.children[0].children[1];
+        this.completedResetButton = this.completedModal.children[0].children[2];
+        this.completedNextButton = this.completedModal.children[0].children[3];
 
         this.pauseButton.onclick = () => this.pause();
         this.pauseResumeButton.onclick = () => this.unpause();
-        this.pauseBackground.onclick = () => this.unpause();
+        //this.pauseBackground.onclick = () => this.unpause();
         this.pauseQuitButton.onclick = () => this.quit();
 
         this.completedQuitButton.onclick = () => this.quit();
@@ -34,17 +34,17 @@ class MainScene extends Scene {
 
     pause() {
         this.level.pause();
-        this.pauseBackground.classList.add("mounted");
+        this.pauseModal.showModal();
     }
 
     unpause() {
-        this.pauseBackground.classList.remove("mounted");
+        this.pauseModal.close();
         this.level.unpause();
     }
 
     reset() {
         this.level.dismount();
-        this.completedBackground.classList.remove("mounted");
+        this.completedModal.close();
         this.level.reset();
         this.level.mount();
     }
@@ -54,18 +54,18 @@ class MainScene extends Scene {
     }
 
     next() {
-        this.completedBackground.classList.remove("mounted");
+        this.completedModal.close();
         this.loadLevel(this.level.getLevelIndex() + 1);
     }
 
     completeLevel() {
         this.level.pause();
-        this.completedBackground.classList.add("mounted");
+        this.completedModal.showModal();
     }
 
     dismount() {
-        this.pauseBackground.classList.remove("mounted");
-        this.completedBackground.classList.remove("mounted");
+        this.completedModal.close();
+        this.pauseModal.close();
         super.dismount();
     }
 
