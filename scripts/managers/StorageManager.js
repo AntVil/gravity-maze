@@ -6,9 +6,6 @@ class StorageManager extends GameManager {
     }
 
     getLevelInfos() {
-        return [
-            true,
-            true
-        ];
+        return LEVEL_STRINGS.map(_ => true);
     }
 }

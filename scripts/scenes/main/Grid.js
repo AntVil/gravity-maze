@@ -6,7 +6,11 @@ class Grid extends GameManager {
 
         let gridElements = {
             " ": AirBlock,
-            "b": SolidBlock
+            "b": SolidBlock,
+            "^": SemiSolidBlockTop,
+            ">": SemiSolidBlockRight,
+            "v": SemiSolidBlockBottom,
+            "<": SemiSolidBlockLeft
         }
 
         this.grid = [];

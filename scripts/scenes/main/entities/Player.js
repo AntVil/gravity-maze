@@ -2,7 +2,7 @@ class Player extends MovingEntity {
     constructor(x, y) {
         super(x, y);
 
-        this.currentDirection = 0;
+        this.currentDirection = DIRECTION_UP;
     }
 
     render(context, width, height) {
@@ -25,12 +25,12 @@ class Player extends MovingEntity {
         context.strokeRect(0, 0, 1, 1);
 
         context.beginPath();
-        if (this.currentDirection === 0) {
+        if (this.currentDirection === DIRECTION_UP) {
             context.fillStyle = "#9F0";
-        } else if (this.currentDirection === 1) {
+        } else if (this.currentDirection === DIRECTION_RIGHT) {
             context.fillStyle = "#0F9";
             context.transform(0, -1, -1, 0, 1, 1);
-        } else if (this.currentDirection === 2) {
+        } else if (this.currentDirection === DIRECTION_DOWN) {
             context.fillStyle = "#90F";
             context.transform(1, 0, 0, -1, 0, 1);
         } else {
@@ -57,13 +57,13 @@ class Player extends MovingEntity {
         super.inputDirection(xDirection, yDirection);
 
         if (xDirection < 0) {
-            this.currentDirection = 3;
+            this.currentDirection = DIRECTION_LEFT;
         } else if (xDirection > 0) {
-            this.currentDirection = 1;
+            this.currentDirection = DIRECTION_RIGHT;
         } else if (yDirection < 0) {
-            this.currentDirection = 0;
+            this.currentDirection = DIRECTION_UP;
         } else {
-            this.currentDirection = 2;
+            this.currentDirection = DIRECTION_DOWN;
         }
     }
 }
