@@ -1,4 +1,5 @@
 :root {
+    --level-select-screen-size: min(var(--screen-square), 600px);
     --level-select-button-size: min(calc(var(--screen-square) / 8), 75px);
 }
 
@@ -6,18 +7,18 @@ nav {
     isolation: isolate;
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: calc(var(--home-screen-size) / 50);
+    gap: calc(var(--level-select-screen-size) / 50);
     width: var(--screen-width);
     height: var(--screen-height);
-    padding: calc(var(--home-screen-size) / 50);
+    padding: calc(var(--level-select-screen-size) / 50);
 }
 
 nav button {
     width: var(--level-select-button-size);
     height: var(--level-select-button-size);
-    padding: calc(var(--home-screen-size) / 100);
+    padding: calc(var(--level-select-screen-size) / 100);
     border: none;
-    font-size: calc(var(--home-screen-size) / 20);
+    font-size: calc(var(--level-select-screen-size) / 20);
     background-color: var(--theme-color-1);
 }
 
@@ -44,4 +45,10 @@ nav>section {
     nav button {
         cursor: pointer;
     }
+}
+
+nav>button {
+    mask-image: url("./images/back.svg");
+    -webkit-mask-image: url("./images/back.svg");
+    background-color: #000;
 }

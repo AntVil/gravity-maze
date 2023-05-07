@@ -5,9 +5,10 @@ class MainScene extends Scene {
         this.level = new Level(-1);
 
         this.undoButton = this.uiContainer.children[0];
-        this.pauseButton = this.uiContainer.children[1];
-        this.pauseModal = this.uiContainer.children[2];
-        this.completedModal = this.uiContainer.children[3];
+        this.resetButton = this.uiContainer.children[1];
+        this.pauseButton = this.uiContainer.children[2];
+        this.pauseModal = this.uiContainer.children[3];
+        this.completedModal = this.uiContainer.children[4];
 
         this.pauseQuitButton = this.pauseModal.children[0].children[1];
         this.pauseResumeButton = this.pauseModal.children[0].children[2];
@@ -18,7 +19,16 @@ class MainScene extends Scene {
 
         this.pauseButton.onclick = () => this.pause();
         this.pauseResumeButton.onclick = () => this.unpause();
+        this.pauseModal.onclick = e => {
+            let rect = this.pauseModal.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+            if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+                this.unpause();
+            }
+        }
         this.pauseQuitButton.onclick = () => this.quit();
+        this.resetButton.onclick = () => this.reset();
 
         this.completedQuitButton.onclick = () => this.quit();
         this.completedResetButton.onclick = () => this.reset();
@@ -44,8 +54,8 @@ class MainScene extends Scene {
     reset() {
         this.level.dismount();
         this.completedModal.close();
-        this.level.reset();
         this.level.mount();
+        this.level.reset();
     }
 
     quit() {

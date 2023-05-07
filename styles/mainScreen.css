@@ -1,27 +1,36 @@
 :root {
+    --main-screen-size: min(var(--screen-square), 600px);
     --main-button-size: min(calc(var(--screen-square) / 8), 75px);
 }
 
 main>button {
     isolation: isolate;
     position: absolute;
+    top: 0;
     width: var(--main-button-size);
     height: var(--main-button-size);
     padding: calc(var(--main-button-size) / 8);
     margin: calc(var(--main-button-size) / 5);
     border: none;
-    font-size: calc(var(--main-button-size) / 2);
-    background-color: var(--theme-color-1);
+    background-color: #000;
 }
 
 main>button:nth-child(1) {
     left: 0;
-    top: 0;
+    mask-image: url("./images/revert.svg");
+    -webkit-mask-image: url("./images/revert.svg");
 }
 
 main>button:nth-child(2) {
+    right: calc(var(--main-button-size) + var(--main-button-size) / 5);
+    mask-image: url("./images/reset.svg");
+    -webkit-mask-image: url("./images/reset.svg");
+}
+
+main>button:nth-child(3) {
     right: 0;
-    top: 0;
+    mask-image: url("./images/pause.svg");
+    -webkit-mask-image: url("./images/pause.svg");
 }
 
 main dialog {

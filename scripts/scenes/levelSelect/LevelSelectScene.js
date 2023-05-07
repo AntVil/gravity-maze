@@ -15,7 +15,7 @@ class LevelSelectScene extends Scene {
 
         for (let i = 0; i < levelInfos.length; i++) {
             let button = document.createElement("button");
-            button.innerText = `${i}`;
+            button.innerText = `${i + 1}`;
             button.onclick = () => {
                 game.sceneManager.toScene(MAIN_SCENE);
                 let mainScene = game.sceneManager.getCurrentScene();
