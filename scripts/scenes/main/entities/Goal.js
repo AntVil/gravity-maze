@@ -50,8 +50,8 @@ class Goal extends Entity {
         } else if (entity instanceof Player) {
             if (
                 this.open &&
-                Math.abs(entity.x - this.x) < 2 * ENTITY_SPEED &&
-                Math.abs(entity.y - this.y) < 2 * ENTITY_SPEED
+                Math.abs(entity.x - this.x) < 2 * ENTITY_MAX_SPEED &&
+                Math.abs(entity.y - this.y) < 2 * ENTITY_MAX_SPEED
             ) {
                 entity.x = this.x;
                 entity.y = this.y;
