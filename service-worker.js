@@ -2,7 +2,6 @@ const cacheName = "time-track";
 const filesToCache = [
     "/gravity-maze/",
     "/gravity-maze/index.html",
-    "/gravity-maze/styles.css",
     "/gravity-maze/styles/index.css",
     "/gravity-maze/styles/theme.css",
     "/gravity-maze/styles/homeScreen.css",
