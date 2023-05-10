@@ -13,25 +13,25 @@ class InputManager extends GameManager {
         });
         this.canvas.addEventListener("touchstart", (e) => {
             this.handleMouseDown(e);
-        });
+        }, { passive: true });
         this.canvas.addEventListener("mousemove", (e) => {
             this.handleMouseMove(e);
         });
         this.canvas.addEventListener("touchmove", (e) => {
             this.handleMouseMove(e);
-        });
+        }, { passive: true });
         this.canvas.addEventListener("mouseup", (e) => {
             this.handleMouseUp(e);
         });
         this.canvas.addEventListener("touchend", (e) => {
             this.handleMouseUp(e);
-        });
+        }, { passive: true });
         this.canvas.addEventListener("mouseleave", (e) => {
             this.handleCancel(e);
         });
         this.canvas.addEventListener("touchcancel", (e) => {
             this.handleCancel(e);
-        });
+        }, { passive: true });
 
         this.startX = undefined;
         this.startY = undefined;
