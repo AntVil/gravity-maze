@@ -1,0 +1,35 @@
+:root {
+    --builder-screen-size: min(var(--screen-square), 600px);
+    --builder-button-size: min(calc(var(--screen-square) / 8), 75px);
+}
+
+aside {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: calc(var(--builder-screen-size) / 50);
+    width: var(--screen-width);
+    height: var(--screen-height);
+    padding: calc(var(--builder-screen-size) / 50);
+}
+
+aside button {
+    isolation: isolate;
+    width: var(--builder-button-size);
+    height: var(--builder-button-size);
+    padding: calc(var(--builder-screen-size) / 100);
+    border: none;
+    font-size: calc(var(--builder-screen-size) / 20);
+    background-color: var(--theme-color-1);
+}
+
+@media (hover: hover) {
+    aside button {
+        cursor: pointer;
+    }
+}
+
+aside>button {
+    mask-image: url("./images/back.svg");
+    -webkit-mask-image: url("./images/back.svg");
+    background-color: #000;
+}

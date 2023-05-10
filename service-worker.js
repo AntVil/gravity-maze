@@ -1,4 +1,4 @@
-const cacheName = "time-track";
+const cacheName = "gravity-maze";
 const filesToCache = [
     "/gravity-maze/",
     "/gravity-maze/index.html",
@@ -7,6 +7,7 @@ const filesToCache = [
     "/gravity-maze/styles/homeScreen.css",
     "/gravity-maze/styles/levelSelectScreen.css",
     "/gravity-maze/styles/mainScreen.css",
+    "/gravity-maze/styles/builderScreen.css",
     "/gravity-maze/styles/images/back.svg",
     "/gravity-maze/styles/images/pause.svg",
     "/gravity-maze/styles/images/reset.svg",
@@ -25,6 +26,7 @@ const filesToCache = [
     "/gravity-maze/scripts/scenes/home/HomeScene.js",
     "/gravity-maze/scripts/scenes/levelSelect/LevelSelectScene.js",
     "/gravity-maze/scripts/scenes/main/MainScene.js",
+    "/gravity-maze/scripts/scenes/builder/builderScene.js",
     "/gravity-maze/scripts/scenes/main/Level.js",
     "/gravity-maze/scripts/scenes/main/Grid.js",
     "/gravity-maze/scripts/scenes/main/blocks/GridBlock.js",

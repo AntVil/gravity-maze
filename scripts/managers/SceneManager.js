@@ -5,7 +5,8 @@ class SceneManager extends GameManager {
         this.scenes = {
             [HOME_SCENE]: new HomeScene(),
             [LEVEL_SELECT_SCENE]: new LevelSelectScene(),
-            [MAIN_SCENE]: new MainScene()
+            [MAIN_SCENE]: new MainScene(),
+            [BUILDER_SCENE]: new BuilderScene()
         };
         this.currentScene = this.scenes[HOME_SCENE];
         this.currentScene.mount();
