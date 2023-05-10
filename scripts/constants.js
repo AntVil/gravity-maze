@@ -24,6 +24,7 @@ const LEVEL_STRINGS = [
     " b  bbbbb        b   bbbb b   bbbb b   bbbb bb        bb b bb b   b bb b   b bbbb&p4,8*8,5*2,0*0,7g7,7&d2",
     "b  b  bb     bb     bbb   bbb     bbbb   b   >   &p0,6*4,0*1,2*1,4g5,4&d2",
     "b   bbbbbbvb b    b b      bbbb    bbb^bb bbb    &p1,0*0,2*3,6*6,4g5,1&d2",
+    "   >   bbb  b bb  v  bb                ^    ^    &p0,0*2,3*5,2*0,4g5,5&d2",
     "bb   bbbbbb   bbbbbb  <   bbbb  bb bbbb  bb bbbb  bb b    >    bbb     bbbbb   bb&p0,6*7,7*5,6*5,2g3,1&d2",
     "       bvbb bb  b  <  bbbbbb    bbbb     bbbbbbbb&p5,0m6,2*0,0*1,2*1,5g5,5&d2"
 ];

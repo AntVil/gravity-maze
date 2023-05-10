@@ -20,7 +20,7 @@ class Grid extends GameManager {
                 if (x === 0 || x === size + 1 || y === 0 || y === size + 1) {
                     row.push(new SolidBlock(x, y));
                 } else {
-                    let fieldChar = gridString[(y - 1) * size + (x - 1)];
+                    let fieldChar = gridString[(y - 1) * size + (x - 1)] || " ";
                     row.push(new gridElements[fieldChar](x, y));
                 }
             }
