@@ -24,6 +24,16 @@ class Level extends MountableGameManager {
         this.paused = false;
     }
 
+    undo(){
+        if(this.xDirection !== 0 || this.yDirection !== 0){
+            return;
+        }
+
+        for (let entity of this.entities) {
+            entity.undo();
+        }
+    }
+
     dismount() {
         this.paused = true;
     }

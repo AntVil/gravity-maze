@@ -17,6 +17,7 @@ class MainScene extends Scene {
         this.completedResetButton = this.completedModal.children[0].children[2];
         this.completedNextButton = this.completedModal.children[0].children[3];
 
+        this.undoButton.onclick = () => this.undo();
         this.pauseButton.onclick = () => this.pause();
         this.pauseResumeButton.onclick = () => this.unpause();
         this.pauseModal.onclick = e => {
@@ -60,6 +61,10 @@ class MainScene extends Scene {
 
     quit() {
         game.sceneManager.toScene(LEVEL_SELECT_SCENE);
+    }
+
+    undo(){
+        this.level.undo();
     }
 
     next() {

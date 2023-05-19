@@ -5,6 +5,8 @@ class MovingEntity extends Entity {
         this.ySpeed = 0;
         this.xAcceleration = 0;
         this.yAcceleration = 0;
+
+        this.positionHistory = [];
     }
 
     update(deltaTime) {
@@ -47,6 +49,8 @@ class MovingEntity extends Entity {
     inputDirection(xDirection, yDirection) {
         this.xAcceleration = xDirection * ENTITY_ACCELERATION;
         this.yAcceleration = yDirection * ENTITY_ACCELERATION;
+
+        this.positionHistory.push([this.x, this.y]);
     }
 
     inputIsPossible() {
@@ -73,5 +77,11 @@ class MovingEntity extends Entity {
         this.ySpeed = 0;
         this.xAcceleration = 0;
         this.yAcceleration = 0;
+    }
+
+    undo() {
+        if (this.positionHistory.length > 0) {
+            [this.x, this.y] = this.positionHistory.pop();
+        }
     }
 }

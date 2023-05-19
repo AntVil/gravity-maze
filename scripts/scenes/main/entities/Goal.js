@@ -53,10 +53,7 @@ class Goal extends Entity {
                 Math.abs(entity.x - this.x) < 2 * ENTITY_MAX_SPEED &&
                 Math.abs(entity.y - this.y) < 2 * ENTITY_MAX_SPEED
             ) {
-                entity.x = this.x;
-                entity.y = this.y;
-                entity.xSpeed = 0;
-                entity.ySpeed = 0;
+                entity.stopMoving();
 
                 let mainScene = game.sceneManager.getCurrentScene()
                 mainScene.completeLevel();

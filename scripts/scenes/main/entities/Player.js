@@ -3,6 +3,7 @@ class Player extends MovingEntity {
         super(x, y);
 
         this.currentDirection = DIRECTION_UP;
+        this.directionHistory = [];
     }
 
     render(context, width, height) {
@@ -56,6 +57,8 @@ class Player extends MovingEntity {
     inputDirection(xDirection, yDirection) {
         super.inputDirection(xDirection, yDirection);
 
+        this.directionHistory.push(this.currentDirection);
+
         if (xDirection < 0) {
             this.currentDirection = DIRECTION_LEFT;
         } else if (xDirection > 0) {
@@ -64,6 +67,14 @@ class Player extends MovingEntity {
             this.currentDirection = DIRECTION_UP;
         } else {
             this.currentDirection = DIRECTION_DOWN;
+        }
+    }
+
+    undo(){
+        super.undo();
+
+        if(this.directionHistory.length > 0){
+            this.currentDirection = this.directionHistory.pop();
         }
     }
 }

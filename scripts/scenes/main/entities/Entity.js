@@ -20,4 +20,8 @@ class Entity extends GameManager {
     inputIsPossible() {
         return true;
     }
+
+    undo(){
+        
+    }
 }
