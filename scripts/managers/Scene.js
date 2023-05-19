@@ -16,4 +16,8 @@ class Scene extends MountableGameManager {
     inputDirection(xDirection, yDirection) {
 
     }
+
+    inputPoint(x, y){
+
+    }
 }

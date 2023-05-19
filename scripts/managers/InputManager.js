@@ -57,6 +57,8 @@ class InputManager extends GameManager {
         this.startY = e.clientY;
         this.currentX = undefined;
         this.currentY = undefined;
+
+        game.sceneManager.getCurrentScene().inputPoint(this.startX, this.startY);
     }
 
     handleMouseMove(e) {

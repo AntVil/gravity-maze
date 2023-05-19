@@ -7,6 +7,9 @@ class Level extends MountableGameManager {
         this.reset();
 
         this.paused = true;
+
+        this.xDirection = 0;
+        this.yDirection = 0;
     }
 
     mount() {
@@ -33,8 +36,8 @@ class Level extends MountableGameManager {
         return this.levelIndex;
     }
 
-    reset() {
-        let [gridString, entitiesString, metaString] = (LEVEL_STRINGS[this.levelIndex] || "&&").split("&");
+    reset(levelString) {
+        let [gridString, entitiesString, metaString] = (LEVEL_STRINGS[this.levelIndex] || levelString || "&&").split("&");
 
         this.resetGrid(gridString);
         this.resetEntities(entitiesString);
@@ -97,6 +100,15 @@ class Level extends MountableGameManager {
             return;
         }
 
+        if (this.xDirection !== 0 || this.yDirection !== 0) {
+            for (let entity of this.entities) {
+                entity.inputDirection(this.xDirection, this.yDirection);
+            }
+            this.sortEntities();
+            this.xDirection = 0;
+            this.yDirection = 0;
+        }
+
         for (let entity of this.entities) {
             entity.update(deltaTime);
             entity.interactGrid(this.grid);
@@ -119,38 +131,31 @@ class Level extends MountableGameManager {
             }
         }
 
-        for (let entity of this.entities) {
-            entity.inputDirection(xDirection, yDirection);
-        }
+        this.xDirection = xDirection;
+        this.yDirection = yDirection;
+    }
 
-        let compareSpeeds = (a, b) =>
-            (Math.abs(a.xSpeed || 0) + Math.abs(a.ySpeed || 0) - (Math.abs(b.xSpeed || 0) + Math.abs(b.ySpeed || 0))) ||
-            b.xSpeed - a.xSpeed ||
-            b.ySpeed - a.ySpeed;
+    sortEntities() {
+        this.entities = [...this.entities].sort((a, b) => {
+            let staticDifference = (b instanceof MovingEntity) - (a instanceof MovingEntity);
+            if (staticDifference !== 0) {
+                return -staticDifference;
+            }
 
-        let compareFunction;
-        if (xDirection < 0) {
-            compareFunction = (a, b) =>
-                compareSpeeds(a, b) ||
-                a.x - b.x ||
-                b.y - a.y;
-        } else if (xDirection > 0) {
-            compareFunction = (a, b) =>
-                compareSpeeds(a, b) ||
-                b.x - a.x ||
-                b.y - a.y;
-        } else if (yDirection < 0) {
-            compareFunction = (a, b) =>
-                compareSpeeds(a, b) ||
-                b.x - a.x ||
-                a.y - b.y;
-        } else {
-            compareFunction = (a, b) =>
-                compareSpeeds(a, b) ||
-                b.x - a.x ||
-                b.y - a.y;
-        }
+            let directionDifference = b.xSpeed - a.xSpeed || b.ySpeed - a.ySpeed;
+            if (isFinite(directionDifference) && directionDifference !== 0) {
+                return directionDifference;
+            }
 
-        this.entities = [...this.entities].sort(compareFunction);
+            if (this.xDirection < 0) {
+                return a.x - b.x || b.y - a.y;
+            } else if (this.xDirection > 0) {
+                return b.x - a.x || b.y - a.y;
+            } else if (this.yDirection < 0) {
+                return b.x - a.x || a.y - b.y;
+            } else {
+                return b.x - a.x || b.y - a.y;
+            }
+        });
     }
 }

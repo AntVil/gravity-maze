@@ -58,11 +58,20 @@ class MovingEntity extends Entity {
     }
 
     stopMoving() {
+        if (this.xSpeed > 0) {
+            this.x = Math.floor(this.x);
+        } else {
+            this.x = Math.round(this.x);
+        }
+        if (this.ySpeed > 0) {
+            this.y = Math.floor(this.y);
+        } else {
+            this.y = Math.round(this.y);
+        }
+
         this.xSpeed = 0;
         this.ySpeed = 0;
         this.xAcceleration = 0;
         this.yAcceleration = 0;
-        this.x = Math.round(this.x);
-        this.y = Math.round(this.y);
     }
 }

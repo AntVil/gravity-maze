@@ -34,11 +34,9 @@ main>button:nth-child(3) {
 }
 
 main dialog {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     background-color: var(--theme-color-2);
     padding: 0;
+    margin: auto;
 }
 
 main dialog::backdrop {
@@ -48,7 +46,6 @@ main dialog::backdrop {
 main dialog div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: calc(var(--main-button-size) / 10);
     padding: calc(var(--main-button-size) / 10);
 }

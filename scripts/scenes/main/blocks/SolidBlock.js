@@ -13,7 +13,7 @@ class SolidBlock extends GridBlock {
     }
 
     interactEntity(entity) {
-        if (entity instanceof MovingEntity){
+        if (entity instanceof MovingEntity) {
             entity.stopMoving();
         }
     }

@@ -4,16 +4,14 @@
 }
 
 aside {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: calc(var(--builder-screen-size) / 50);
+    display: flex;
+    justify-content: space-between;
     width: var(--screen-width);
     height: var(--screen-height);
     padding: calc(var(--builder-screen-size) / 50);
 }
 
 aside button {
-    isolation: isolate;
     width: var(--builder-button-size);
     height: var(--builder-button-size);
     padding: calc(var(--builder-screen-size) / 100);
@@ -28,8 +26,43 @@ aside button {
     }
 }
 
-aside>button {
+aside>button:first-child {
+    isolation: isolate;
     mask-image: url("./images/back.svg");
     -webkit-mask-image: url("./images/back.svg");
     background-color: #000;
+}
+
+aside>button:nth-child(2) {
+    isolation: isolate;
+    mask-image: url("./images/edit.svg");
+    -webkit-mask-image: url("./images/edit.svg");
+    background-color: #000;
+}
+
+aside dialog {
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    margin: auto;
+}
+
+aside dialog::backdrop {
+    background-color: #000A;
+}
+
+aside div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--builder-button-size) / 10);
+    padding: calc(var(--builder-button-size) / 10);
+}
+
+@media (orientation: landscape) {
+    aside section {
+        top: 0;
+        left: unset;
+        max-width: 100px;
+        height: unset;
+    }
 }
