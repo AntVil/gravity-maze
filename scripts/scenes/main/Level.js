@@ -7,9 +7,6 @@ class Level extends MountableGameManager {
         this.reset();
 
         this.paused = true;
-
-        this.xDirection = 0;
-        this.yDirection = 0;
     }
 
     mount() {
@@ -24,8 +21,8 @@ class Level extends MountableGameManager {
         this.paused = false;
     }
 
-    undo(){
-        if(this.xDirection !== 0 || this.yDirection !== 0){
+    undo() {
+        if (this.xDirection !== 0 || this.yDirection !== 0) {
             return;
         }
 
@@ -47,6 +44,9 @@ class Level extends MountableGameManager {
     }
 
     reset(levelString) {
+        this.xDirection = 0;
+        this.yDirection = 0;
+
         let [gridString, entitiesString, metaString] = (LEVEL_STRINGS[this.levelIndex] || levelString || "&&").split("&");
 
         this.resetGrid(gridString);

@@ -47,7 +47,7 @@
     <script defer src="./scripts/scenes/home/HomeScene.js"></script>
     <script defer src="./scripts/scenes/levelSelect/LevelSelectScene.js"></script>
     <script defer src="./scripts/scenes/main/MainScene.js"></script>
-    <script defer src="./scripts/scenes/builder/builderScene.js"></script>
+    <script defer src="./scripts/scenes/builder/BuilderScene.js"></script>
 
     <script defer src="./scripts/scenes/main/Level.js"></script>
     <script defer src="./scripts/scenes/main/Grid.js"></script>
@@ -110,30 +110,36 @@
 
         <dialog>
             <div>
-                <button>5</button>
-                <button>7</button>
-                <button>9</button>
-                <button>11</button>
+                <input type="radio" name="builderSize" />
+                <label for="">S</label>
+                <input type="radio" name="builderSize" />
+                <label for="">M</label>
+                <input type="radio" name="builderSize" />
+                <label for="">L</label>
+                <input type="radio" name="builderSize" />
+                <label for="">XL</label>
             </div>
             <div>
-                <button>up</button>
-                <button>right</button>
-                <button>down</button>
-                <button>left</button>
+                <input type="radio" name="builderTool" />
+                <label for="">x</label>
+                <input type="radio" name="builderTool" />
+                <label for="">↻</label>
             </div>
             <div>
-                <button>delete</button>
-                <button>rotate</button>
+                <input type="radio" name="builderTool" />
+                <label for="">solid</label>
+                <input type="radio" name="builderTool" />
+                <label for="">semi</label>
             </div>
             <div>
-                <button>solid</button>
-                <button>semi</button>
-            </div>
-            <div>
-                <button>player</button>
-                <button>moving</button>
-                <button>star</button>
-                <button>goal</button>
+                <input type="radio" name="builderTool" />
+                <label for="">player</label>
+                <input type="radio" name="builderTool" />
+                <label for="">moving</label>
+                <input type="radio" name="builderTool" />
+                <label for="">star</label>
+                <input type="radio" name="builderTool" />
+                <label for="">goal</label>
             </div>
         </dialog>
     </aside>
