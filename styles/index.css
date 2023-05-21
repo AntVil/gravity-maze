@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: #0000;
     -webkit-user-select: none;
     user-select: none;
     margin: 0;
