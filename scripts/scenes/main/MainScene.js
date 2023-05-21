@@ -4,11 +4,16 @@ class MainScene extends Scene {
 
         this.level = new Level(-1);
 
-        this.undoButton = this.uiContainer.children[0];
-        this.resetButton = this.uiContainer.children[1];
-        this.pauseButton = this.uiContainer.children[2];
-        this.pauseModal = this.uiContainer.children[3];
-        this.completedModal = this.uiContainer.children[4];
+        this.levelIcon = this.uiContainer.querySelector("p");
+        [
+            this.undoButton,
+            this.resetButton,
+            this.pauseButton
+        ] = this.uiContainer.querySelectorAll("button");
+        [
+            this.pauseModal,
+            this.completedModal
+        ] = this.uiContainer.querySelectorAll("dialog");
 
         this.pauseQuitButton = this.pauseModal.children[0].children[1];
         this.pauseResumeButton = this.pauseModal.children[0].children[2];
@@ -40,6 +45,7 @@ class MainScene extends Scene {
         this.level.dismount();
         this.level = new Level(levelIndex);
         this.level.mount();
+        this.levelIcon.innerText = `${levelIndex + 1}`;
     }
 
     pause() {
@@ -63,7 +69,7 @@ class MainScene extends Scene {
         game.sceneManager.toScene(LEVEL_SELECT_SCENE);
     }
 
-    undo(){
+    undo() {
         this.level.undo();
     }
 

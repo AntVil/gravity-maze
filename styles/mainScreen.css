@@ -3,6 +3,21 @@
     --main-button-size: min(calc(var(--screen-square) / 8), 75px);
 }
 
+main p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--main-button-size);
+    height: var(--main-button-size);
+    padding-top: calc(var(--main-button-size) / 8);
+    margin-top: calc(var(--main-button-size) / 5);
+    transform: translateX(-50%);
+    font-size: calc(var(--main-button-size) / 2);
+}
+
 main>button {
     isolation: isolate;
     position: absolute;
@@ -15,19 +30,19 @@ main>button {
     background-color: #000;
 }
 
-main>button:nth-child(1) {
+main>button:nth-child(2) {
     left: 0;
     mask-image: url("./images/revert.svg");
     -webkit-mask-image: url("./images/revert.svg");
 }
 
-main>button:nth-child(2) {
+main>button:nth-child(3) {
     right: calc(var(--main-button-size) + var(--main-button-size) / 5);
     mask-image: url("./images/reset.svg");
     -webkit-mask-image: url("./images/reset.svg");
 }
 
-main>button:nth-child(3) {
+main>button:nth-child(4) {
     right: 0;
     mask-image: url("./images/pause.svg");
     -webkit-mask-image: url("./images/pause.svg");
