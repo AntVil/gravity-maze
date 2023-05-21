@@ -119,22 +119,21 @@ class BuilderScene extends Scene {
     }
 
     handleDelete(indexX, indexY, index) {
+        this.levelString = this.levelString.replace(new RegExp(`[^,0-9]${indexX},${indexY}[,0-9]*`), "");
         this.levelString = this.levelString.substring(0, index) + " " + this.levelString.substring(index + 1);
     }
 
     handleRotate(indexX, indexY, index) {
-        let current = this.levelString[index];
+        const rotations = {
+            "<": "^",
+            "^": ">",
+            ">": "v",
+            "v": "<"
+        }
 
-        let next;
-        if (current === "<") {
-            next = "^";
-        } else if (current === "^") {
-            next = ">";
-        } else if (current === ">") {
-            next = "v";
-        } else if (current === "v") {
-            next = "<";
-        } else {
+        let next = rotations[this.levelString[index]];
+        
+        if(next === undefined){
             return;
         }
 
