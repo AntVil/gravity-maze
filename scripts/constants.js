@@ -39,5 +39,7 @@ const LEVEL_STRINGS = [
     "  > <   b ^ b        bb    b              b     b&m0,5p1,0m6,5*2,5g4,5*0,2*6,0&d2",
     "    b          b     bbbbbb b    b >    <  ^  ^  &p1,4m1,5*6,6m0,2*3,1*0,0g3,4&d2",
     "   <          ^   b      b  bb  b                &*2,4*4,1m0,6p1,6*0,5g3,4&d2",
-    "b bbbbbbb   bbbbbbb bbbbbbb        b         b b     bb          b      b^      b&p2,1m1,6m1,7g0,1m1,5*0,7*8,4*3,7&d2"
+    "b bbbbbbb   bbbbbbb bbbbbbb        b         b b     bb          b      b^      b&p2,1m1,6m1,7g0,1m1,5*0,7*8,4*3,7&d2",
+    "                     > < &*1,3*3,3*2,1p0,0g4,4c4,0,-1,0,-1,0,-1,0,-1,0&d0",
+    "          ^              &*2,3*3,3g1,3p4,4*0,0c4,0,-1,0,-1,0,-1,0,-1,0,0,0,0,1,0,1,0,1,0,1&d1"
 ];

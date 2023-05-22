@@ -21,6 +21,7 @@ class Goal extends Entity {
         );
 
         context.fillStyle = "#FD0";
+        context.strokeStyle = "#000";
         context.lineWidth = ENTITY_STROKE_WIDTH;
         context.lineJoin = "round";
 

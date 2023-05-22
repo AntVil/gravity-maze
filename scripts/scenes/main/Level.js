@@ -62,13 +62,14 @@ class Level extends MountableGameManager {
         let entityElements = {
             "p": Player,
             "m": MovingBlock,
+            "c": ConstrainedMovingBlock,
             "*": Star,
             "g": Goal
         }
 
         this.entities = [];
 
-        for (let [_, entityChar, parametersString] of entitiesString.matchAll(/([^0-9])([0-9,]+)/g)) {
+        for (let [_, entityChar, parametersString] of entitiesString.matchAll(/([^0-9\-])([0-9,\-]+)/g)) {
             let parameters = parametersString.split(",").map((a) => parseInt(a));
 
             this.entities.push(new entityElements[entityChar](...parameters));
@@ -100,6 +101,10 @@ class Level extends MountableGameManager {
 
         let cellSize = this.grid.getCellSize(width, height);
 
+        for (let entity of this.entities) {
+            entity.prerender(context, cellSize, cellSize);
+        }
+        
         for (let entity of this.entities) {
             entity.render(context, cellSize, cellSize);
         }

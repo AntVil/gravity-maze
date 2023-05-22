@@ -5,6 +5,10 @@ class Entity extends GameManager {
         this.y = y + 1;
     }
 
+    prerender(context, width, height) {
+
+    }
+
     interactGrid(grid) {
 
     }
@@ -21,7 +25,7 @@ class Entity extends GameManager {
         return true;
     }
 
-    undo(){
-        
+    undo() {
+
     }
 }
