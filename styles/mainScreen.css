@@ -3,7 +3,7 @@
     --main-button-size: min(calc(var(--screen-square) / 8), 75px);
 }
 
-main p{
+main p {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,13 +49,14 @@ main>button:nth-child(4) {
 }
 
 main dialog {
-    background-color: var(--theme-color-2);
+    background-color: var(--theme-color-1);
     padding: 0;
     margin: auto;
+    border: calc(var(--main-button-size) / 20) solid #000;
 }
 
 main dialog::backdrop {
-    background-color: #000A;
+    background-color: #0003;
 }
 
 main dialog div {
@@ -76,11 +77,12 @@ main dialog button {
     font-size: calc(var(--main-button-size) / 3);
     padding: calc(var(--main-button-size) / 10);
     border: none;
-    background-color: var(--theme-color-1);
+    background-color: var(--theme-color-2);
 }
 
 @media (hover: hover) {
-    main button {
+    main button:hover {
         cursor: pointer;
+        background-color: var(--theme-color-3);
     }
 }

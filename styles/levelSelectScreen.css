@@ -19,7 +19,7 @@ nav button {
     padding: calc(var(--level-select-screen-size) / 100);
     border: none;
     font-size: calc(var(--level-select-screen-size) / 20);
-    background-color: var(--theme-color-1);
+    background-color: var(--theme-color-2);
 }
 
 nav>section {
@@ -42,8 +42,9 @@ nav>section {
 }
 
 @media (hover: hover) {
-    nav button {
+    nav button:hover {
         cursor: pointer;
+        background-color: var(--theme-color-3);
     }
 }
 

@@ -36,8 +36,6 @@ class ConstrainedMovingBlock extends MovingBlock {
                 path.push([currentX, currentY]);
             }
 
-            console.log(currentX, currentY)
-
             if (!(currentY in this.constrainLookup)) {
                 this.constrainLookup[currentY] = {};
             }
@@ -77,6 +75,31 @@ class ConstrainedMovingBlock extends MovingBlock {
             }
             context.stroke();
         }
+    }
+
+    render(context, width, height) {
+        super.render(context, width, height);
+
+        context.save();
+        context.translate(
+            (this.x + ENTITY_STROKE_WIDTH / 2) * width,
+            (this.y + ENTITY_STROKE_WIDTH / 2) * height
+        );
+        context.scale(
+            (1 - ENTITY_STROKE_WIDTH) * width,
+            (1 - ENTITY_STROKE_WIDTH) * height
+        );
+
+        context.fillStyle = "#09A";
+        context.lineWidth = ENTITY_STROKE_WIDTH;
+        context.strokeStyle = "#000";
+
+        context.beginPath();
+        context.arc(0.5, 0.5, 0.25, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+
+        context.restore();
     }
 
     update(deltaTime) {

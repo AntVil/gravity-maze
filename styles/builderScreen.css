@@ -17,12 +17,13 @@ aside button {
     padding: calc(var(--builder-screen-size) / 100);
     border: none;
     font-size: calc(var(--builder-screen-size) / 20);
-    background-color: var(--theme-color-1);
+    background-color: var(--theme-color-2);
 }
 
 @media (hover: hover) {
-    aside button {
+    aside button:hover {
         cursor: pointer;
+        background-color: var(--theme-color-3);
     }
 }
 
