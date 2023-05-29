@@ -7,6 +7,7 @@
     scrollbar-width: 0;
     color: #000;
     font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 150ms;
 }
 
 *::-webkit-scrollbar {
@@ -33,6 +34,7 @@ body,
     width: var(--screen-width);
     height: var(--screen-height);
     overflow: hidden;
+    background-color: var(--theme-color-1);
 }
 
 #canvas~:not(.mounted) {

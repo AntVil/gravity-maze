@@ -31,6 +31,13 @@ header>button {
     background-color: var(--theme-color-2);
 }
 
+@media (hover: none){
+    header>button:nth-child(2){
+        padding: calc(var(--home-screen-size) / 35);
+        background-color: var(--theme-color-3);
+    }
+}
+
 @media (hover: hover) {
     header>button:hover {
         cursor: pointer;

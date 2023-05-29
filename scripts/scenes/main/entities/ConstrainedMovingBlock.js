@@ -1,7 +1,7 @@
 class ConstrainedMovingBlock extends MovingBlock {
     constructor(x, y, ...pathOffsets) {
         super(x, y);
-        
+
         x += 1;
         y += 1;
 
@@ -24,7 +24,7 @@ class ConstrainedMovingBlock extends MovingBlock {
             if (offsetX === 0 && offsetY === 0) {
                 currentX = x;
                 currentY = y;
-                
+
                 this.paths.push(path);
                 path = [[currentX, currentY]];
 
@@ -58,19 +58,20 @@ class ConstrainedMovingBlock extends MovingBlock {
             }
         }
 
-        if(path.length > 0){
+        if (path.length > 0) {
             this.paths.push(path);
         }
     }
 
-    prerender(context, width, height){
-        context.strokeStyle = "#AAA";
+    prerender(context, width, height) {
+        context.strokeStyle = "#85a5e5";
         context.lineWidth = width * ENTITY_STROKE_WIDTH;
         context.lineCap = "round";
+        context.lineJoin = "round";
 
-        for(let path of this.paths){
+        for (let path of this.paths) {
             context.beginPath();
-            for(let [x, y] of path){
+            for (let [x, y] of path) {
                 context.lineTo((x + 0.5) * width, (y + 0.5) * height);
             }
             context.stroke();
@@ -90,7 +91,7 @@ class ConstrainedMovingBlock extends MovingBlock {
             (1 - ENTITY_STROKE_WIDTH) * height
         );
 
-        context.fillStyle = "#09A";
+        context.fillStyle = "#85a5e5";
         context.lineWidth = ENTITY_STROKE_WIDTH;
         context.strokeStyle = "#000";
 

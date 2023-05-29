@@ -9,21 +9,31 @@ class Player extends MovingEntity {
     render(context, width, height) {
         context.save();
         context.translate(
-            (this.x + ENTITY_STROKE_WIDTH / 2) * width,
-            (this.y + ENTITY_STROKE_WIDTH / 2) * height
+            (this.x + ENTITY_STROKE_WIDTH / 2 + GRID_PADDING) * width,
+            (this.y + ENTITY_STROKE_WIDTH / 2 + GRID_PADDING) * height
         );
         context.scale(
-            (1 - ENTITY_STROKE_WIDTH) * width,
-            (1 - ENTITY_STROKE_WIDTH) * height
+            (1 - ENTITY_STROKE_WIDTH - 2 * GRID_PADDING) * width,
+            (1 - ENTITY_STROKE_WIDTH - 2 * GRID_PADDING) * height
         );
 
-        context.fillStyle = "#AAA";
+        context.fillStyle = "#b4ccfc";
         context.lineWidth = ENTITY_STROKE_WIDTH;
         context.strokeStyle = "#000";
         context.lineJoin = "round";
 
+
         context.fillRect(0, 0, 1, 1);
         context.strokeRect(0, 0, 1, 1);
+        /*
+        context.fillRect(0.01, 0.01, 0.98, 0.98);
+        context.strokeRect(
+            0.01,
+            0.01,
+            0.98,
+            0.98
+        );
+        */
 
         context.beginPath();
         if (this.currentDirection === DIRECTION_UP) {
@@ -32,7 +42,7 @@ class Player extends MovingEntity {
             context.fillStyle = "#0F9";
             context.transform(0, -1, -1, 0, 1, 1);
         } else if (this.currentDirection === DIRECTION_DOWN) {
-            context.fillStyle = "#90F";
+            context.fillStyle = "#F09";
             context.transform(1, 0, 0, -1, 0, 1);
         } else {
             context.fillStyle = "#F90";
@@ -70,10 +80,10 @@ class Player extends MovingEntity {
         }
     }
 
-    undo(){
+    undo() {
         super.undo();
 
-        if(this.directionHistory.length > 0){
+        if (this.directionHistory.length > 0) {
             this.currentDirection = this.directionHistory.pop();
         }
     }

@@ -80,6 +80,12 @@ main dialog button {
     background-color: var(--theme-color-2);
 }
 
+@media (hover: none){
+    main dialog button:last-child{
+        background-color: var(--theme-color-3);
+    }
+}
+
 @media (hover: hover) {
     main button:hover {
         cursor: pointer;

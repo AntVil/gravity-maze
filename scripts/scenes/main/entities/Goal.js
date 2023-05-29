@@ -2,6 +2,7 @@ class Goal extends Entity {
     constructor(x, y) {
         super(x, y);
 
+        this.oscillation = 0;
         this.open = false;
     }
 
@@ -25,10 +26,14 @@ class Goal extends Entity {
         context.lineWidth = ENTITY_STROKE_WIDTH;
         context.lineJoin = "round";
 
+        let size;
+        if(this.open){
+            size = 0.1 + Math.sin(this.oscillation) / 50;
+        }else{
+            size = 0.45;
+        }
+
         context.beginPath();
-
-        let size = this.open ? 0.1 : 0.45;
-
         context.lineTo(0.5, size);
         context.lineTo(1 - size, 0.5);
         context.lineTo(0.5, 1 - size);
@@ -43,6 +48,7 @@ class Goal extends Entity {
 
     update(deltaTime) {
         this.open = true;
+        this.oscillation += deltaTime / 200;
     }
 
     interactEntity(entity) {

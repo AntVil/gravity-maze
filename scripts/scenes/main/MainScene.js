@@ -51,6 +51,7 @@ class MainScene extends Scene {
     pause() {
         this.level.pause();
         this.pauseModal.showModal();
+        this.pauseResumeButton.focus();
     }
 
     unpause() {
@@ -81,6 +82,7 @@ class MainScene extends Scene {
     completeLevel() {
         this.level.pause();
         this.completedModal.showModal();
+        this.completedNextButton.focus();
     }
 
     dismount() {

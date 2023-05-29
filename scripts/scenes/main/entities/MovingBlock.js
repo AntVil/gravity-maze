@@ -6,15 +6,15 @@ class MovingBlock extends MovingEntity {
     render(context, width, height) {
         context.save();
         context.translate(
-            (this.x + ENTITY_STROKE_WIDTH / 2) * width,
-            (this.y + ENTITY_STROKE_WIDTH / 2) * height
+            (this.x + ENTITY_STROKE_WIDTH / 2 + GRID_PADDING) * width,
+            (this.y + ENTITY_STROKE_WIDTH / 2 + GRID_PADDING) * height
         );
         context.scale(
-            (1 - ENTITY_STROKE_WIDTH) * width,
-            (1 - ENTITY_STROKE_WIDTH) * height
+            (1 - ENTITY_STROKE_WIDTH - 2 * GRID_PADDING) * width,
+            (1 - ENTITY_STROKE_WIDTH - 2 * GRID_PADDING) * height
         );
 
-        context.fillStyle = "#AAA";
+        context.fillStyle = "#b4ccfc";
         context.lineWidth = ENTITY_STROKE_WIDTH;
         context.strokeStyle = "#000";
         context.lineJoin = "round";

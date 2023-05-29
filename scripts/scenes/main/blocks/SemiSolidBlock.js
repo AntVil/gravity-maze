@@ -6,14 +6,13 @@ class SemiSolidBlock extends SolidBlock {
 
     render(context, width, height) {
         context.save();
-
         context.translate(
-            (this.x + ENTITY_STROKE_WIDTH / 2) * width,
-            (this.y + ENTITY_STROKE_WIDTH / 2) * height
+            (this.x + GRID_PADDING) * width,
+            (this.y + GRID_PADDING) * height
         );
         context.scale(
-            (1 - ENTITY_STROKE_WIDTH) * width,
-            (1 - ENTITY_STROKE_WIDTH) * height
+            (1 - 2 * GRID_PADDING) * width,
+            (1 - 2 * GRID_PADDING) * height
         );
 
         context.fillStyle = "#AAA";
