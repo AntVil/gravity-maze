@@ -27,9 +27,9 @@ class Goal extends Entity {
         context.lineJoin = "round";
 
         let size;
-        if(this.open){
+        if (this.open) {
             size = 0.1 + Math.sin(this.oscillation) / 50;
-        }else{
+        } else {
             size = 0.45;
         }
 
