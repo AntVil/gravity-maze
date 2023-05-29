@@ -65,7 +65,7 @@ class Star extends Entity {
         }
     }
 
-    inputDirection(xDirection, yDirection) {
+    inputDirection(xDirection, yDirection, isPlayerInput) {
         this.collectedSince++;
     }
 

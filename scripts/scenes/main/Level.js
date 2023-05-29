@@ -27,6 +27,12 @@ class Level extends MountableGameManager {
         }
 
         for (let entity of this.entities) {
+            if (!entity.inputIsPossible()) {
+                return;
+            }
+        }
+
+        for (let entity of this.entities) {
             entity.undo();
         }
     }
@@ -52,6 +58,7 @@ class Level extends MountableGameManager {
         this.resetGrid(gridString);
         this.resetEntities(entitiesString);
         this.resetMeta(metaString);
+        this.update(0);
     }
 
     resetGrid(gridString) {
@@ -130,12 +137,22 @@ class Level extends MountableGameManager {
         }
 
         if (this.xDirection !== 0 || this.yDirection !== 0) {
+            let inputIsPossible = true;
             for (let entity of this.entities) {
-                entity.inputDirection(this.xDirection, this.yDirection);
+                if (!entity.inputIsPossible()) {
+                    inputIsPossible = false;
+                    break
+                }
             }
-            this.sortEntities();
-            this.xDirection = 0;
-            this.yDirection = 0;
+
+            if(inputIsPossible){
+                for (let entity of this.entities) {
+                    entity.inputDirection(this.xDirection, this.yDirection, deltaTime !== 0);
+                }
+                this.sortEntities();
+                this.xDirection = 0;
+                this.yDirection = 0;
+            }
         }
 
         for (let entity of this.entities) {
@@ -153,13 +170,7 @@ class Level extends MountableGameManager {
         if (this.paused) {
             return;
         }
-
-        for (let entity of this.entities) {
-            if (!entity.inputIsPossible()) {
-                return;
-            }
-        }
-
+        
         this.xDirection = xDirection;
         this.yDirection = yDirection;
     }

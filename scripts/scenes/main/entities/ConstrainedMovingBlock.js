@@ -128,9 +128,9 @@ class ConstrainedMovingBlock extends MovingBlock {
         }
     }
 
-    inputDirection(xDirection, yDirection) {
+    inputDirection(xDirection, yDirection, isPlayerInput) {
         if (this.constrainLookup[this.y][this.x][this.getDirection(xDirection, yDirection)]) {
-            super.inputDirection(xDirection, yDirection);
+            super.inputDirection(xDirection, yDirection, isPlayerInput);
         }
     }
 

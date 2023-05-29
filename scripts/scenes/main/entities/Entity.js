@@ -17,7 +17,7 @@ class Entity extends GameManager {
 
     }
 
-    inputDirection(xDirection, yDirection) {
+    inputDirection(xDirection, yDirection, isPlayerInput) {
 
     }
 

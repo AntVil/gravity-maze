@@ -22,18 +22,8 @@ class Player extends MovingEntity {
         context.strokeStyle = "#000";
         context.lineJoin = "round";
 
-
         context.fillRect(0, 0, 1, 1);
         context.strokeRect(0, 0, 1, 1);
-        /*
-        context.fillRect(0.01, 0.01, 0.98, 0.98);
-        context.strokeRect(
-            0.01,
-            0.01,
-            0.98,
-            0.98
-        );
-        */
 
         context.beginPath();
         if (this.currentDirection === DIRECTION_UP) {
@@ -64,10 +54,12 @@ class Player extends MovingEntity {
         context.restore();
     }
 
-    inputDirection(xDirection, yDirection) {
-        super.inputDirection(xDirection, yDirection);
+    inputDirection(xDirection, yDirection, isPlayerInput) {
+        super.inputDirection(xDirection, yDirection, isPlayerInput);
 
-        this.directionHistory.push(this.currentDirection);
+        if(isPlayerInput){
+            this.directionHistory.push(this.currentDirection);
+        }
 
         if (xDirection < 0) {
             this.currentDirection = DIRECTION_LEFT;

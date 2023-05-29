@@ -50,11 +50,13 @@ class MovingEntity extends Entity {
         }
     }
 
-    inputDirection(xDirection, yDirection) {
+    inputDirection(xDirection, yDirection, isPlayerInput) {
         this.xAcceleration = xDirection * ENTITY_ACCELERATION;
         this.yAcceleration = yDirection * ENTITY_ACCELERATION;
 
-        this.positionHistory.push([this.x, this.y]);
+        if(isPlayerInput){
+            this.positionHistory.push([this.x, this.y]);
+        }
     }
 
     inputIsPossible() {
@@ -91,6 +93,11 @@ class MovingEntity extends Entity {
     undo() {
         if (this.positionHistory.length > 0) {
             [this.x, this.y] = this.positionHistory.pop();
+            this.xSpeed = 0;
+            this.ySpeed = 0;
+            this.xAcceleration = 0;
+            this.yAcceleration = 0;
+            this.distanceMoved = 0;
         }
     }
 
