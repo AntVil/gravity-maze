@@ -8,8 +8,6 @@ class MovingEntity extends Entity {
 
         this.positionHistory = [];
 
-        this.audio = new HitAudio();
-
         this.distanceMoved = 0;
     }
 
