@@ -1,6 +1,8 @@
 const UPDATES_PER_SECOND = 30;
 const UPDATE_DELTA = 1000 / UPDATES_PER_SECOND;
 
+const VOLUME_MAX = 0.1;
+
 const HOME_SCENE = 0;
 const LEVEL_SELECT_SCENE = 1;
 const MAIN_SCENE = 2;

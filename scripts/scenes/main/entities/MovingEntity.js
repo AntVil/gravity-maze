@@ -7,6 +7,10 @@ class MovingEntity extends Entity {
         this.yAcceleration = 0;
 
         this.positionHistory = [];
+
+        this.audio = new HitAudio();
+
+        this.distanceMoved = 0;
     }
 
     update(deltaTime) {
@@ -15,6 +19,8 @@ class MovingEntity extends Entity {
 
         this.x += deltaTime * this.xSpeed;
         this.y += deltaTime * this.ySpeed;
+
+        this.distanceMoved += Math.abs(deltaTime * this.xSpeed) + Math.abs(deltaTime * this.ySpeed);
     }
 
     interactGrid(grid) {
@@ -77,11 +83,40 @@ class MovingEntity extends Entity {
         this.ySpeed = 0;
         this.xAcceleration = 0;
         this.yAcceleration = 0;
+        
+        if(this.distanceMoved > 0.9){
+            this.playStopAudio();
+        }
+        this.distanceMoved = 0;
     }
 
     undo() {
         if (this.positionHistory.length > 0) {
             [this.x, this.y] = this.positionHistory.pop();
         }
+    }
+
+    playStopAudio(){
+        let context = game.audioManager.getAudioContext();
+
+        let oscillator = context.createOscillator();
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(220, context.currentTime);
+        
+        let volume = context.createGain();
+        volume.gain.setValueAtTime(0, context.currentTime);
+        
+        oscillator.connect(volume);
+        volume.connect(context.destination);
+
+        
+        volume.gain.linearRampToValueAtTime(VOLUME_MAX, context.currentTime + 0.02);
+        
+        oscillator.start();
+        
+        setTimeout(() => {
+            volume.gain.linearRampToValueAtTime(0, context.currentTime + 0.03);
+            oscillator.stop(context.currentTime + 0.03);
+        }, 20);
     }
 }
