@@ -69,8 +69,22 @@ class Level extends MountableGameManager {
 
         this.entities = [];
 
-        for (let [_, entityChar, parametersString] of entitiesString.matchAll(/([^0-9\-])([0-9,\-]+)/g)) {
-            let parameters = parametersString.split(",").map((a) => parseInt(a));
+        for (let [_, entityChar, parametersString] of entitiesString.matchAll(/([^0-9vVhH\.\-])([0-9vVhH,\.\-]+)/g)) {
+            let parameters = parametersString.split(",").map(
+                (a) => {
+                    let result = parseInt(a);
+                    if(isNaN(result)){
+                        result = {
+                            ".": [0, 0],
+                            "h": [1, 0],
+                            "H": [-1, 0],
+                            "v": [0, 1],
+                            "V": [0, -1]
+                        }[a];
+                    }
+
+                    return result;
+                }).flat();
 
             this.entities.push(new entityElements[entityChar](...parameters));
         }
