@@ -14,7 +14,7 @@ class SolidBlock extends GridBlock {
             (1 - 2 * GRID_PADDING) * height
         );
 
-        context.fillStyle = "#85a5e5";
+        context.fillStyle = "#97b9ff";
         context.fillRect(0, 0, 1, 1);
 
         context.restore();
