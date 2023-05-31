@@ -45,6 +45,7 @@ const LEVEL_STRINGS = [
     "  > <   b ^ b        bb    b              b     b&m0,5p1,0m6,5*2,5g4,5*0,2*6,0&d2",
     "    b          b     bbbbbb b    b >    <  ^  ^  &p1,4m1,5*6,6m0,2*3,1*0,0g3,4&d2",
     "   <          ^   b      b  bb  b                &*2,4*4,1m0,6p1,6*0,5g3,4&d2",
+    "  b   bb                  v       b b     bb b  b      bbb   b    bvbbb b       ^&*8,3p0,6m8,0m0,0*4,7*6,3g7,5&d0",
     "b bbbbbbb   bbbbbbb bbbbbbb        b         b b     bb          b      b^      b&p2,1m1,6m1,7g0,1m1,5*0,7*8,4*3,7&d2",
     "                     > < &*1,3*3,3*2,1p0,0g4,4c4,0,H,H,H,H&d0",
     "          ^              &*2,3*3,3g1,3p4,4*0,0c4,0,H,H,H,H,.,v,v,v,v&d1",
@@ -58,5 +59,6 @@ const LEVEL_STRINGS = [
     "  bb    b b b     bb      b            b   b     &p1,0*2,1*0,6*3,2g4,1c2,4,H,H&d2",
     "       bbbb   b   b  b   <  bbb         b  <     &p1,0*4,5*2,2*4,1g0,0c1,3,h,hm1,2&d2",
     "b   b  b   b              b b      b   bbbb      &c1,6,Vm1,5p6,6*1,4*0,2*6,0g4,3&d2",
-    "bbb      bbb                  bbb   bbbb bbb  >     b   bbbbbb     b           b &g2,5m0,3m8,8c8,7,v,.,V,V,V,V,V,V,V*3,5*5,5*4,4p6,5&d2"
+    "bbb      bbb                  bbb   bbbb bbb  >     b   bbbbbb     b           b &g2,5m0,3m8,8c8,7,v,.,V,V,V,V,V,V,V*3,5*5,5*4,4p6,5&d2",
+    "bbb    bbbbb             bb  b^bbbbb  b  b   vvb                      bb   b   bb&p6,0m5,0c0,3,h*1,3*5,1*3,7g8,1&d20"
 ];
