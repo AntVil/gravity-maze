@@ -1,5 +1,5 @@
 :root {
-    --home-screen-size: min(var(--screen-square), 600px);
+    --home-screen-size: min(var(--screen-square), 800px);
 }
 
 header {
@@ -26,9 +26,9 @@ header>h1 {
 
 header>button {
     width: 60%;
-    padding: calc(var(--home-screen-size) / 100);
+    padding: calc(var(--home-screen-size) / 80);
     border: none;
-    font-size: calc(var(--home-screen-size) / 20);
+    font-size: calc(var(--home-screen-size) / 16);
     background-color: var(--theme-color-2);
 }
 
