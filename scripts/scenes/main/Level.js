@@ -70,6 +70,8 @@ class Level extends MountableGameManager {
             "p": Player,
             "m": MovingBlock,
             "c": ConstrainedMovingBlock,
+            "d": Door,
+            "t": Teleporter,
             "*": Star,
             "g": Goal
         }

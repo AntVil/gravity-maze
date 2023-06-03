@@ -43,7 +43,9 @@ const filesToCache = [
     "/gravity-maze/scripts/scenes/main/entities/MovingEntity.js",
     "/gravity-maze/scripts/scenes/main/entities/Player.js",
     "/gravity-maze/scripts/scenes/main/entities/MovingBlock.js",
-    "/gravity-maze/scripts/scenes/main/entities/ConstrainedMovingBlock.js"
+    "/gravity-maze/scripts/scenes/main/entities/ConstrainedMovingBlock.js",
+    "/gravity-maze/scripts/scenes/main/entities/Teleporter.js",
+    "/gravity-maze/scripts/scenes/main/entities/Door.js"
 ];
 
 self.addEventListener("install", (event) => {
