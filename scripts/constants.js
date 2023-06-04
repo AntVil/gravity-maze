@@ -70,5 +70,6 @@ const LEVEL_STRINGS = [
     "bbbbbbbb     bbbbbbbb                            &p0,6t3,1,3,6*5,1*1,1*6,6g3,3&d2",
     "bbbb   bbbb   bbbb   bbbbbbb   bbbb   bbbb   bbbb&t2,4,4,2p0,6*0,4*4,0*6,2g2,6&d2",
     "bb bbbb bb      bbb  bbb &p0,2d3,2,2,0*0,4*2,1*4,2g4,4&d0",
-    "     bbb       bbbb      &p0,4m0,0d2,0,3,4*4,4*4,0*2,2g0,2&d2"
+    "     bbb       bbbb      &p0,4m0,0d2,0,3,4*4,4*4,0*2,2g0,2&d2",
+    "bbb bbb                         b    b           &p0,6d3,1,2,4*0,1*3,2*5,3g3,0&d2",
 ];

@@ -82,7 +82,7 @@ class Level extends MountableGameManager {
             let parameters = parametersString.split(",").map(
                 (a) => {
                     let result = parseInt(a);
-                    if(isNaN(result)){
+                    if (isNaN(result)) {
                         result = {
                             ".": [0, 0],
                             "h": [1, 0],
@@ -127,7 +127,7 @@ class Level extends MountableGameManager {
         for (let entity of this.entities) {
             entity.prerender(context, cellSize, cellSize);
         }
-        
+
         for (let entity of this.entities) {
             entity.render(context, cellSize, cellSize);
         }
@@ -147,7 +147,7 @@ class Level extends MountableGameManager {
                 }
             }
 
-            if(inputIsPossible){
+            if (inputIsPossible) {
                 for (let entity of this.entities) {
                     entity.inputDirection(this.xDirection, this.yDirection, deltaTime !== 0);
                 }
@@ -172,13 +172,18 @@ class Level extends MountableGameManager {
         if (this.paused) {
             return;
         }
-        
+
         this.xDirection = xDirection;
         this.yDirection = yDirection;
     }
 
     sortEntities() {
         this.entities = [...this.entities].sort((a, b) => {
+            let solidDifference = (b instanceof SolidEntity) - (a instanceof SolidEntity);
+            if (solidDifference !== 0) {
+                return -solidDifference;
+            }
+
             let staticDifference = (b instanceof MovingEntity) - (a instanceof MovingEntity);
             if (staticDifference !== 0) {
                 return -staticDifference;

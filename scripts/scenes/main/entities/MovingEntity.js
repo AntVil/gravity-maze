@@ -1,14 +1,21 @@
 class MovingEntity extends Entity {
     constructor(x, y) {
         super(x, y);
+
         this.xSpeed = 0;
         this.ySpeed = 0;
         this.xAcceleration = 0;
         this.yAcceleration = 0;
 
+        this.xDirection = 0;
+        this.yDirection = 0;
+
+        this.directionHistory = [];
         this.positionHistory = [];
 
         this.distanceMoved = 0;
+
+        this.stoppedMovingEntities = [];
     }
 
     update(deltaTime) {
@@ -46,25 +53,34 @@ class MovingEntity extends Entity {
         }
 
         if (Math.abs(entity.x - this.x) < 1 && Math.abs(entity.y - this.y) < 1 && this.isMoving() !== entity.isMoving()) {
-            this.stopMoving();
+            if (this.isMoving()) {
+                this.stopMoving();
+                entity.stoppedMovingEntities.push(this);
+            }
         }
     }
 
     inputDirection(xDirection, yDirection, isPlayerInput) {
-        this.xAcceleration = xDirection * ENTITY_ACCELERATION;
-        this.yAcceleration = yDirection * ENTITY_ACCELERATION;
-
-        if(isPlayerInput){
+        if (isPlayerInput) {
             this.positionHistory.push([this.x, this.y]);
+            this.directionHistory.push([this.xDirection, this.yDirection]);
         }
+
+        this.xDirection = xDirection;
+        this.yDirection = yDirection;
+
+        this.xAcceleration = this.xDirection * ENTITY_ACCELERATION;
+        this.yAcceleration = this.yDirection * ENTITY_ACCELERATION;
+
+        this.stoppedMovingEntities = [];
     }
 
     inputIsPossible() {
-        return this.isMoving();
+        return !this.isMoving();
     }
 
     isMoving() {
-        return this.xSpeed === 0 && this.ySpeed === 0;
+        return this.xSpeed !== 0 || this.ySpeed !== 0;
     }
 
     stopMoving() {
@@ -83,16 +99,29 @@ class MovingEntity extends Entity {
         this.ySpeed = 0;
         this.xAcceleration = 0;
         this.yAcceleration = 0;
-        
-        if(this.distanceMoved > 0.9){
+
+        if (this.distanceMoved > 0.9) {
             this.playStopAudio();
         }
         this.distanceMoved = 0;
     }
 
+    resumeMoving() {
+        this.xAcceleration = this.xDirection * ENTITY_ACCELERATION;
+        this.yAcceleration = this.yDirection * ENTITY_ACCELERATION;
+
+        for (let stoppedMovingEntity of this.stoppedMovingEntities) {
+            stoppedMovingEntity.resumeMoving();
+        }
+
+        this.stoppedMovingEntities = [];
+    }
+
     undo() {
         if (this.positionHistory.length > 0) {
             [this.x, this.y] = this.positionHistory.pop();
+            [this.xDirection, this.yDirection] = this.directionHistory.pop();
+
             this.xSpeed = 0;
             this.ySpeed = 0;
             this.xAcceleration = 0;
@@ -101,24 +130,24 @@ class MovingEntity extends Entity {
         }
     }
 
-    playStopAudio(){
+    playStopAudio() {
         let context = game.audioManager.getAudioContext();
 
         let oscillator = context.createOscillator();
         oscillator.type = "sine";
         oscillator.frequency.setValueAtTime(220, context.currentTime);
-        
+
         let volume = context.createGain();
         volume.gain.setValueAtTime(0, context.currentTime);
-        
+
         oscillator.connect(volume);
         volume.connect(context.destination);
 
-        
+
         volume.gain.linearRampToValueAtTime(VOLUME_MAX, context.currentTime + 0.02);
-        
+
         oscillator.start();
-        
+
         setTimeout(() => {
             volume.gain.linearRampToValueAtTime(0, context.currentTime + 0.03);
             oscillator.stop(context.currentTime + 0.03);

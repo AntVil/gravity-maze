@@ -1,9 +1,6 @@
 class Player extends MovingEntity {
     constructor(x, y) {
         super(x, y);
-
-        this.currentDirection = DIRECTION_UP;
-        this.directionHistory = [];
     }
 
     render(context, width, height) {
@@ -26,12 +23,12 @@ class Player extends MovingEntity {
         context.strokeRect(0, 0, 1, 1);
 
         context.beginPath();
-        if (this.currentDirection === DIRECTION_UP) {
+        if (this.yDirection < 0) {
             context.fillStyle = "#9F0";
-        } else if (this.currentDirection === DIRECTION_RIGHT) {
+        } else if (this.xDirection > 0) {
             context.fillStyle = "#0F9";
             context.transform(0, -1, -1, 0, 1, 1);
-        } else if (this.currentDirection === DIRECTION_DOWN) {
+        } else if (this.yDirection > 0) {
             context.fillStyle = "#F09";
             context.transform(1, 0, 0, -1, 0, 1);
         } else {
@@ -52,31 +49,5 @@ class Player extends MovingEntity {
         context.stroke();
 
         context.restore();
-    }
-
-    inputDirection(xDirection, yDirection, isPlayerInput) {
-        super.inputDirection(xDirection, yDirection, isPlayerInput);
-
-        if(isPlayerInput){
-            this.directionHistory.push(this.currentDirection);
-        }
-
-        if (xDirection < 0) {
-            this.currentDirection = DIRECTION_LEFT;
-        } else if (xDirection > 0) {
-            this.currentDirection = DIRECTION_RIGHT;
-        } else if (yDirection < 0) {
-            this.currentDirection = DIRECTION_UP;
-        } else {
-            this.currentDirection = DIRECTION_DOWN;
-        }
-    }
-
-    undo() {
-        super.undo();
-
-        if (this.directionHistory.length > 0) {
-            this.currentDirection = this.directionHistory.pop();
-        }
     }
 }
