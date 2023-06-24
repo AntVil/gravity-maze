@@ -14,11 +14,6 @@ class Key extends Collectable {
 
         context.save();
 
-        context.strokeStyle = this.color;
-        context.lineWidth = ENTITY_STROKE_WIDTH;
-        context.lineJoin = "round";
-        context.lineCap = "round";
-
         context.translate(
             (this.x + ENTITY_STROKE_WIDTH / 2) * width,
             (this.y + ENTITY_STROKE_WIDTH / 2) * height
@@ -28,15 +23,32 @@ class Key extends Collectable {
             (1 - ENTITY_STROKE_WIDTH) * height
         );
 
-        let verticalOffset = Math.sin(this.oscillation) / 15;
+        context.translate(0, Math.sin(this.oscillation) / 15);
 
-        context.beginPath();
-        context.arc(0.65, 0.5 + verticalOffset, 0.2, -Math.PI, Math.PI);
-        context.lineTo(0.2, 0.5 + verticalOffset);
-        context.lineTo(0.2, 0.65 + verticalOffset);
-        context.stroke();
+        context.strokeStyle = "#000";
+        context.lineWidth = 3 * ENTITY_STROKE_WIDTH;
+        context.lineJoin = "round";
+        context.lineCap = "round";
+
+        this.strokeKeyShape(context);
+
+        context.strokeStyle = this.color;
+        context.lineWidth = ENTITY_STROKE_WIDTH;
+
+        this.strokeKeyShape(context);
 
         context.restore();
+    }
+
+    strokeKeyShape(context){
+        context.beginPath();
+        context.ellipse(0.65, 0.5, 0.15, 0.2, 0, -Math.PI, Math.PI)
+        context.lineTo(0.2, 0.5);
+        context.lineTo(0.2, 0.65);
+        context.lineTo(0.2, 0.65);
+        context.lineTo(0.25, 0.65);
+        context.lineTo(0.25, 0.5);
+        context.stroke();
     }
 
     update(deltaTime) {
