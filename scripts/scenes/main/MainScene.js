@@ -22,9 +22,18 @@ class MainScene extends Scene {
         this.completedResetButton = this.completedModal.children[0].children[2];
         this.completedNextButton = this.completedModal.children[0].children[3];
 
-        this.undoButton.onclick = () => this.undo();
-        this.pauseButton.onclick = () => this.pause();
-        this.pauseResumeButton.onclick = () => this.unpause();
+        this.undoButton.onclick = () => {
+            this.playButtonAudio();
+            this.undo();
+        }
+        this.pauseButton.onclick = () => {
+            this.playButtonAudio();
+            this.pause();
+        }
+        this.pauseResumeButton.onclick = () => {
+            this.playButtonAudio();
+            this.unpause();
+        }
         this.pauseModal.onclick = e => {
             let rect = this.pauseModal.getBoundingClientRect();
             let x = e.clientX - rect.left;
@@ -33,12 +42,27 @@ class MainScene extends Scene {
                 this.unpause();
             }
         }
-        this.pauseQuitButton.onclick = () => this.quit();
-        this.resetButton.onclick = () => this.reset();
+        this.pauseQuitButton.onclick = () => {
+            this.playButtonAudio();
+            this.quit();
+        }
+        this.resetButton.onclick = () => {
+            this.playButtonAudio();
+            this.reset();
+        }
 
-        this.completedQuitButton.onclick = () => this.quit();
-        this.completedResetButton.onclick = () => this.reset();
-        this.completedNextButton.onclick = () => this.next();
+        this.completedQuitButton.onclick = () => {
+            this.playButtonAudio();
+            this.quit();
+        }
+        this.completedResetButton.onclick = () => {
+            this.playButtonAudio();
+            this.reset();
+        }
+        this.completedNextButton.onclick = () => {
+            this.playButtonAudio();
+            this.next();
+        }
     }
 
     loadLevel(levelIndex) {

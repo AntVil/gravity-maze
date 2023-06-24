@@ -5,7 +5,10 @@ class LevelSelectScene extends Scene {
         this.backButton = this.uiContainer.children[0];
         this.levelContainer = this.uiContainer.children[1];
 
-        this.backButton.onclick = () => game.sceneManager.toScene(HOME_SCENE);
+        this.backButton.onclick = () => {
+            this.playButtonAudio();
+            game.sceneManager.toScene(HOME_SCENE);
+        }
     }
 
     mount() {
@@ -17,6 +20,7 @@ class LevelSelectScene extends Scene {
             let button = document.createElement("button");
             button.innerText = `${i + 1}`;
             button.onclick = () => {
+                this.playButtonAudio();
                 game.sceneManager.toScene(MAIN_SCENE);
                 let mainScene = game.sceneManager.getCurrentScene();
                 mainScene.loadLevel(i);

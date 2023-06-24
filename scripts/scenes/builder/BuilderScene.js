@@ -36,8 +36,14 @@ class BuilderScene extends Scene {
             this.goalButton
         ] = this.editOptions.children[3].querySelectorAll(`[type="radio"]`);
 
-        this.backButton.onclick = () => game.sceneManager.toScene(HOME_SCENE);
-        this.editButton.onclick = () => this.openEditOptions();
+        this.backButton.onclick = () => {
+            this.playButtonAudio();
+            game.sceneManager.toScene(HOME_SCENE);
+        }
+        this.editButton.onclick = () => {
+            this.playButtonAudio();
+            this.openEditOptions();
+        }
 
         this.editOptions.onclick = e => {
             let rect = this.editOptions.getBoundingClientRect();
