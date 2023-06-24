@@ -72,4 +72,5 @@ const LEVEL_STRINGS = [
     "bb bbbb bb      bbb  bbb &p0,2d3,2,2,0*0,4*2,1*4,2g4,4&d0",
     "     bbb       bbbb      &p0,4m0,0d2,0,3,4*4,4*4,0*2,2g0,2&d2",
     "bbb bbb                         b    b           &p0,6d3,1,2,4*0,1*3,2*5,3g3,0&d2",
+    "bbb   b           b                v     b       &p0,6g6,6*6,1*5,0*4,3d3,6,6,4d4,6,1,5d5,6,1,3&d2",
 ];
