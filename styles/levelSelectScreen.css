@@ -1,6 +1,7 @@
 :root {
     --level-select-screen-size: min(var(--screen-square), 600px);
     --level-select-button-size: min(calc(var(--screen-square) / 8), 75px);
+    --level-select-scroll-shadow-size: calc(var(--level-select-button-size) / 2);
 }
 
 nav {
@@ -8,6 +9,7 @@ nav {
     display: grid;
     grid-template-rows: auto 1fr;
     gap: calc(var(--level-select-screen-size) / 50);
+    position: relative;
     width: var(--screen-width);
     height: var(--screen-height);
     padding: calc(var(--level-select-screen-size) / 50);
@@ -26,13 +28,34 @@ nav>section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: calc(var(--level-select-button-size) / 5);
-    position: relative;
-    left: 50%;
     width: fit-content;
     height: fit-content;
     max-height: 100%;
-    transform: translate(-50%, 0);
+    margin: auto;
     overflow-y: scroll;
+    padding: var(--level-select-scroll-shadow-size) 0;
+}
+
+nav::before{
+    content: "";
+    grid-column: 1;
+    grid-row: 2;
+    position: absolute;
+    inset: -1px 0 auto 0;
+    width: 100%;
+    height: var(--level-select-scroll-shadow-size);
+    background: linear-gradient(0deg, #0000 0%, var(--theme-color-1) 100%);
+}
+
+nav::after{
+    content: "";
+    grid-column: 1;
+    grid-row: 2;
+    position: absolute;
+    inset: auto 0 -1px 0;
+    width: 100%;
+    height: var(--level-select-scroll-shadow-size);
+    background: linear-gradient(0deg, var(--theme-color-1) 0%, #0000 100%);
 }
 
 @media (min-width: 600px) {
