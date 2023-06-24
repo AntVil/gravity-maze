@@ -80,6 +80,11 @@ main dialog button {
     background-color: var(--theme-color-2);
 }
 
+main dialog button:disabled{
+    filter: brightness(0.5);
+    opacity: 0.5;
+}
+
 @media (hover: none){
     main dialog button:last-child{
         background-color: var(--theme-color-3);
@@ -87,7 +92,7 @@ main dialog button {
 }
 
 @media (hover: hover) {
-    main button:hover {
+    main button:not(:disabled):hover {
         cursor: pointer;
         background-color: var(--theme-color-3);
     }

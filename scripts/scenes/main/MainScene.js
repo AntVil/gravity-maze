@@ -106,7 +106,12 @@ class MainScene extends Scene {
     completeLevel() {
         this.level.pause();
         this.completedModal.showModal();
-        this.completedNextButton.focus();
+        if (this.level.getLevelIndex() === LEVEL_STRINGS.length - 1) {
+            this.completedNextButton.disabled = true;
+        } else {
+            this.completedNextButton.disabled = false;
+            this.completedNextButton.focus();
+        }
     }
 
     dismount() {
